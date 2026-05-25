@@ -32,7 +32,7 @@ class Affine:
         Returns:
             (batch_size, output_dim)
         """
-        
+
         self.x = x
         out = np.dot(x, self.W) + self.b
 
@@ -51,10 +51,11 @@ class Affine:
         """
 
         dx = np.dot(dout, self.W.T)
-        self.dw = np.dot(self.x.T, dout)
+        self.dW = np.dot(self.x.T, dout)
         self.db = np.sum(dout, axis=0)
 
         return dx
+
 
 class BatchNorm:
     """
