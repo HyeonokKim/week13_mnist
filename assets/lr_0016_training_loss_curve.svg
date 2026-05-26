@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Training Loss Curve for learning rate 0.0016</title>
+  <desc id="desc">Line chart showing training loss decreasing from 0.3520 to 0.0434 over 20 epochs, with test accuracy 98.53%.</desc>
+  <rect width="640" height="480" fill="#ffffff"/>
+  <text x="320" y="24" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#111111">Training Loss Curve</text>
+  <line x1="72" y1="418" x2="606" y2="418" stroke="#111111" stroke-width="1"/>
+  <line x1="72" y1="32" x2="72" y2="418" stroke="#111111" stroke-width="1"/>
+  <text x="339" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#111111">Epoch</text>
+  <text x="18" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#111111" transform="rotate(-90 18 225)">Loss</text>
+  <g font-family="Arial, sans-serif" font-size="12" fill="#111111" text-anchor="middle">
+    <text x="72" y="438">0</text>
+    <text x="212.5" y="438">5</text>
+    <text x="353.1" y="438">10</text>
+    <text x="493.6" y="438">15</text>
+    <text x="606" y="438">19</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="12" fill="#111111" text-anchor="end">
+    <text x="62" y="421">0.03</text>
+    <text x="62" y="364">0.08</text>
+    <text x="62" y="307">0.13</text>
+    <text x="62" y="251">0.18</text>
+    <text x="62" y="194">0.23</text>
+    <text x="62" y="137">0.28</text>
+    <text x="62" y="80">0.33</text>
+  </g>
+  <g stroke="#e5e7eb" stroke-width="1">
+    <line x1="72" y1="361.2" x2="606" y2="361.2"/>
+    <line x1="72" y1="304.4" x2="606" y2="304.4"/>
+    <line x1="72" y1="247.7" x2="606" y2="247.7"/>
+    <line x1="72" y1="190.9" x2="606" y2="190.9"/>
+    <line x1="72" y1="134.1" x2="606" y2="134.1"/>
+    <line x1="72" y1="77.4" x2="606" y2="77.4"/>
+  </g>
+  <polyline fill="none" stroke="#1f77b4" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"
+    points="72.0,46.9 100.1,248.4 128.2,292.3 156.3,314.3 184.4,333.5 212.5,340.2 240.6,348.5 268.7,359.6 296.8,367.0 324.9,368.8 353.1,373.3 381.2,381.3 409.3,382.1 437.4,385.8 465.5,388.7 493.6,390.5 521.7,392.9 549.8,392.2 577.9,397.9 606.0,399.5"/>
+  <g font-family="Arial, sans-serif" font-size="13" fill="#111111">
+    <text x="410" y="64">Final loss: 0.0434</text>
+    <text x="410" y="84">Test accuracy: 98.53%</text>
+  </g>
+</svg>
