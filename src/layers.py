@@ -23,6 +23,9 @@ class Affine:
         """가중치 W와 편향 b를 외부 params dict와 같은 배열 객체로 공유합니다."""
         self.W = W
         self.b = b
+        self.x = None
+        self.dW = None
+        self.db = None
 
     def forward(self, x):
         """
@@ -32,8 +35,11 @@ class Affine:
         Returns:
             (batch_size, output_dim)
         """
+
         self.x = x
-        return x @ self.W + self.b
+        out = np.dot(x, self.W) + self.b
+
+        return out
 
     def backward(self, dout):
         """
@@ -46,11 +52,12 @@ class Affine:
         Side effects:
             self.dW, self.db에 optimizer가 사용할 gradient를 저장합니다.
         """
-        self.dW = self.x.T @ dout
-        self.db = np.sum(dout, axis=0)
-        dx = dout @ self.W.T
-        return dx
 
+        dx = np.dot(dout, self.W.T)
+        self.dW = np.dot(self.x.T, dout)
+        self.db = np.sum(dout, axis=0)
+
+        return dx
 
 class BatchNorm:
     """
