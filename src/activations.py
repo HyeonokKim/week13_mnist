@@ -10,7 +10,7 @@
 import numpy as np
 
 
-class ReLU:
+class relu:
     """
     ReLU(Rectified Linear Unit) 활성화 함수.
 
@@ -28,11 +28,10 @@ class ReLU:
         Returns:
             x와 같은 shape. x > 0인 위치만 원래 값을 유지합니다.
         """
-        
-        self.mask = (x<=0)
+        # TODO: x > 0 위치를 self.mask에 저장하고, 음수/0 위치는 0으로 바꾸세요.
+        self.mask = (x <= 0)
         out = x.copy()
-        out[self.mask] = 0 
-
+        out[self.mask] = 0
         return out
 
     def backward(self, dout):
@@ -43,10 +42,9 @@ class ReLU:
         Returns:
             ReLU 입력 x에 대한 gradient. forward 때 x <= 0이었던 위치는 0입니다.
         """
-
+        # TODO: forward에서 저장한 self.mask를 이용해 gradient가 흐를 위치만 남기세요.
         dout[self.mask] = 0
         dx = dout
-
         return dx
 
 class Softmax:
@@ -56,6 +54,10 @@ class Softmax:
     각 샘플의 로짓(logit)을 클래스별 확률로 바꿉니다.
     exp 계산 전에 행별 최댓값을 빼면 큰 숫자에서 overflow가 나는 것을 줄일 수 있습니다.
     """
+    def __init__(self):
+        self.loss = None
+        self.y = None
+        self.t = None
 
     def forward(self, x):
         """

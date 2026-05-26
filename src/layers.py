@@ -23,6 +23,9 @@ class Affine:
         """가중치 W와 편향 b를 외부 params dict와 같은 배열 객체로 공유합니다."""
         self.W = W
         self.b = b
+        self.x = None
+        self.dW = None
+        self.db = None
 
     def forward(self, x):
         """
@@ -55,7 +58,6 @@ class Affine:
         self.db = np.sum(dout, axis=0)
 
         return dx
-
 
 class BatchNorm:
     """
