@@ -18,9 +18,42 @@ def train(model, optimizer, x_train, y_train, epochs=20, batch_size=128):
     Returns:
         loss_history: epoch별 평균 손실 리스트
     """
-    # TODO: epoch마다 데이터를 섞고, batch 단위로 forward/loss/backward/update를 수행하세요.
-    # 힌트: Softmax + CrossEntropy 결합 gradient는 y_pred copy에서 정답 위치에 1을 빼서 만듭니다.
-    raise NotImplementedError("train을 구현하세요.")
+    n_samples = x_train.shape[0]
+    loss_history = []
+
+    for epoch in range(epochs):
+        # 1) 인덱스 무작위 셔플
+        perm = np.random.permutation(n_samples)
+        x_shuffled = x_train[perm]
+        y_shuffled = y_train[perm]
+
+        epoch_losses = []
+        # 2) 배치 단위 학습
+        for start in range(0, n_samples, batch_size):
+            end = start + batch_size
+            x_batch = x_shuffled[start:end]
+            y_batch = y_shuffled[start:end]
+            actual_batch = x_batch.shape[0]
+
+            # Forward + 손실
+            y_pred = model.forward(x_batch, train=True)
+            loss = cross_entropy_loss(y_pred, y_batch)
+            epoch_losses.append(loss)
+
+            # Softmax + CrossEntropy 결합 gradient
+            dout = y_pred.copy()
+            dout[np.arange(actual_batch), y_batch] -= 1
+            dout /= actual_batch
+
+            # Backward + 파라미터 업데이트
+            model.backward(dout)
+            optimizer.update(model.params, model.grads)
+
+        avg_loss = float(np.mean(epoch_losses))
+        loss_history.append(avg_loss)
+        print(f"Epoch {epoch + 1}/{epochs} - loss: {avg_loss:.4f}")
+
+    return loss_history
 
 
 def evaluate(model, x, y):
