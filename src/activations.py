@@ -10,7 +10,7 @@
 import numpy as np
 
 
-class relu:
+class ReLU:
     """
     ReLU(Rectified Linear Unit) 활성화 함수.
 
@@ -42,9 +42,9 @@ class relu:
         Returns:
             ReLU 입력 x에 대한 gradient. forward 때 x <= 0이었던 위치는 0입니다.
         """
-        # TODO: forward에서 저장한 self.mask를 이용해 gradient가 흐를 위치만 남기세요.
-        dout[self.mask] = 0
-        dx = dout
+        # forward에서 저장한 self.mask를 이용해 gradient가 흐를 위치만 남깁니다.
+        dx = dout.copy()
+        dx[self.mask] = 0
         return dx
 
 class Softmax:
